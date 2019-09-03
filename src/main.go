@@ -4,7 +4,7 @@ import (
     "errors"
     "log"
 
-    //"github.com/tidwall/gjson"
+    "github.com/tidwall/gjson"
 
     "github.com/aws/aws-lambda-go/events"
     "github.com/aws/aws-lambda-go/lambda"
@@ -23,7 +23,7 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
     log.Printf("Processing Lambda request %s\n", request.RequestContext.RequestID)
 
     return events.APIGatewayProxyResponse{
-        Body:       "Echoing: " + request.Body, //gjson.Get(request.Body, "exampleString").String(),
+        Body:       "Echoing: " + gjson.Get(request.Body, "exampleString").String(),
 	StatusCode: 200,
     }, nil
 }

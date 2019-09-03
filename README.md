@@ -6,4 +6,5 @@ The REST API echoes a string (exampleString) passed into the body of the request
 ```
 {
     "exampleString": "something"
-}```
+}
+```
