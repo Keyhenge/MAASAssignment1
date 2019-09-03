@@ -22,12 +22,28 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
     // stdout and stderr are sent to AWS CloudWatch Logs
     log.Printf("Processing Lambda request %s\n", request.RequestContext.RequestID)
 
+    message := gjson.Get(request.Body, "exampleString").String()
+    vowels := []byte{'a', 'e', 'i', 'o', 'u'}
+    for (!contains(vowels, message[0])) {
+        message = message[1:] + string(message[0])
+    }
+    message = message + "ay"
+
     return events.APIGatewayProxyResponse{
-        Body:       "Echoing: " + gjson.Get(request.Body, "exampleString").String(),
+        Body:       "Echoing: " + message,
 	StatusCode: 200,
     }, nil
 }
 
 func main() {
     lambda.Start(Handler)
+}
+
+func contains(s []byte, e byte) bool {
+    for _, a := range s {
+        if a == e {
+            return true
+        }
+    }
+    return false
 }
