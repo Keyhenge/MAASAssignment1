@@ -3,13 +3,13 @@ info:
   description: "An example API Gateway made for MAaS assignment 1"
   version: "1.0.0"
   title: "Echo Server"
-  host: "petstore.swagger.io"
+  host: ""
   basePath: "/v2"
 tags:
 - name: "example"
   description: "An example tag which could be used for grouping"
 schemes:
-- "http"
+- "https"
 paths:
   /example:
     post:
@@ -25,7 +25,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "A JSON object that contains an example string to be echoed"
+        description: "JSON object containing example string to be echoed"
         required: true
         schema:
           $ref: "#/definitions/ExampleBody"
