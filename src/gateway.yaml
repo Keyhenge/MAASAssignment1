@@ -1,0 +1,62 @@
+swagger: "2.0"
+info:
+  description: "An example API Gateway made for MAaS assignment 1"
+  version: "1.0.0"
+  title: "Echo Server"
+  host: "petstore.swagger.io"
+  basePath: "/v2"
+tags:
+- name: "example"
+  description: "An example tag which could be used for grouping"
+schemes:
+- "http"
+paths:
+  /example:
+    post:
+      tags:
+      - "example"
+      summary: "Gives back an example string with minor changes"
+      description: ""
+      operationId: "example"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "A JSON object that contains an example string to be echoed"
+        required: true
+        schema:
+          $ref: "#/definitions/ExampleBody"
+      responses:
+        200:
+          description: "Success"
+        405:
+          description: "Invalid input"
+# securityDefinitions:
+#  petstore_auth:
+#    type: "oauth2"
+#    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+#    flow: "implicit"
+#    scopes:
+#      write:pets: "modify pets in your account"
+#      read:pets: "read your pets"
+#  api_key:
+#    type: "apiKey"
+#   name: "api_key"
+#   in: "header"
+definitions:
+  ExampleBody:
+    properties:
+      exampleString:
+        type: "string"
+  ApiResponse:
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
