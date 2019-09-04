@@ -30,7 +30,7 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
     message = message + "ay"
 
     return events.APIGatewayProxyResponse{
-        Body:       "Echoing: " + message,
+        Body:       "Translation: " + message,
 	StatusCode: 200,
     }, nil
 }
